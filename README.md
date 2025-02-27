@@ -1,11 +1,13 @@
+# Run server:
 ```bash
 cd server
 node index.js
 ```
-
+# Start react app
 ```bash
 npm run dev
 ```
+
 
 
 # React + TypeScript + Vite
