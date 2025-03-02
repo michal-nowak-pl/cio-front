@@ -27,6 +27,7 @@ const Signup: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      console.log("response:", response); // Log the error code
 
       const result = await response.json();
       
@@ -36,7 +37,8 @@ const Signup: React.FC = () => {
       if (response.ok) {
         setMessage("Account created successfully!");
         console.log("response headers: ", response.headers); // Log the API token
-        const token = response.headers.get("X-Api-Token");
+        console.log("response body: ", response.body); // Log the API token
+        const token = response.body.get("apiToken");
         if (token) {
           setApiToken(token);
           localStorage.setItem("apiToken", token); // Store the token in local storage

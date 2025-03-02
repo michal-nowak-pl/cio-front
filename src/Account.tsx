@@ -13,21 +13,10 @@ const Account: React.FC = () => {
 
   useEffect(() => {
     const fetchAccountData = async () => {
-      const token = localStorage.getItem("apiToken"); // Retrieve the token from local storage
-      if (!token) {
-        setError("No API token found. Please sign up first.");
-        setLoading(false);
-        return;
-      }
-
       try {
-        const response = await fetch('/account', {
-          headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the headers
-          },
-        });
+        const response = await fetch('http://localhost:5000/account');
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error(`Network response was not ok. Status ${response.status}, Body: ${await response.text()}`);
         }
         const data: AccountData = await response.json();
         setAccountData(data);

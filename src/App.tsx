@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Signup from './Signup';
 import Account from './Account';
+import MagicLogin from './MagicLogin';
 
 const App = () => {
   return (
@@ -13,6 +14,9 @@ const App = () => {
               <Link to="/signup" className="hover:underline">Sign Up</Link>
             </li>
             <li>
+              <Link to="/login" className="hover:underline">Login</Link>
+            </li>
+            <li>
               <Link to="/account" className="hover:underline">Account</Link>
             </li>
           </ul>
@@ -20,6 +24,7 @@ const App = () => {
         <div className="p-4">
           <Routes>
             <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<MagicLogin />} />
             <Route path="/account" element={<Account />} />
             {/* Add other routes here */}
           </Routes>
