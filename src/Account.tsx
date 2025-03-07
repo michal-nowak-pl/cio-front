@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 interface AccountData {
   id: number;
@@ -14,9 +14,13 @@ const Account: React.FC = () => {
   useEffect(() => {
     const fetchAccountData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/account');
+        const response = await fetch("/api/account");
         if (!response.ok) {
-          throw new Error(`Network response was not ok. Status ${response.status}, Body: ${await response.text()}`);
+          throw new Error(
+            `Network response was not ok. Status ${
+              response.status
+            }, Body: ${await response.text()}`
+          );
         }
         const data: AccountData = await response.json();
         setAccountData(data);
